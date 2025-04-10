@@ -1,6 +1,6 @@
 * {
-	--corner-radius: 10px;
-	--album-art-size: 100px;
+	--corner-radius: 25px;
+	--album-art-size: 50px;
 }
 
 #statusContainer {
@@ -30,7 +30,7 @@
 	margin: 20px;
 	filter: drop-shadow(15px 15px 7px rgba(0, 0, 0, 1));
 	width: 100%;
-	max-width: 500px;
+	max-width: 400px;
 	bottom: 45%;
 	left: 50%;
 	opacity: 0;
@@ -55,12 +55,12 @@
 #songInfoBox {
 	position: relative;
 	color: white;
-	width: calc(100% - 125px);
+	/* width: calc(100% - 125px); */
+	width: calc(100%);
 	display: flex;
 	flex-direction: column;
 	flex: 0 1 auto;
 	justify-content: center;
-	z-index: 1;
 	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 	overflow: hidden;
 	z-index: 4;
@@ -79,7 +79,6 @@
 #IAmRunningOutOfNamesForTheseBoxes {
 	position: absolute;
 	width: calc(100% - 40px);
-	position: absolute;
 	top: 50%;
 	-ms-transform: translateY(-50%);
 	transform: translateY(-50%);
@@ -98,16 +97,17 @@
 #backgroundImage {
 	filter: blur(20px);
 	position: absolute;
-	width: 140%;
+	width: 100%;
 	top: 50%;
 	left: 50%;
 	transform: translateX(-50%) translateY(-50%);
+	transition: all 2s ease;
 }
 
 #backgroundImageBack {
 	filter: blur(20px);
 	position: absolute;
-	width: 140%;
+	width: 100%;
 	top: 50%;
 	left: 50%;
 	transform: translateX(-50%) translateY(-50%);
@@ -115,11 +115,12 @@
 }
 
 #artistLabel {
-	font-size: 16px;
+	font-size: 18px;
 	font-weight: 400;
 	line-height: 1;
 	white-space: nowrap;
 	transition: all 0.5s ease;
+	text-align: center;
 }
 
 #songLabel {
@@ -130,41 +131,39 @@
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	transition: all 0.5s ease;
+	text-align: center;
 }
 
-#progressBg {
+/* The following commented-out CSS is left unchanged */
+/* #progressBg {
 	margin-top: 15px;
 	width: 100%;
 	height: auto;
 	border-radius: 5px;
 	background-color: #1F1F1F;
-}
-
-#progressBar {
+} */
+/* #progressBar {
 	border-radius: 5px;
 	height: 5px;
 	width: 20%;
 	background-color: #ffffff;
 	margin: 10px 0px;
-}
-
-#times {
+} */
+/* #times {
 	position: relative;
 	height: 16px;
 	font-size: 16px;
 	font-weight: 700;
 	line-height: 2.2;
-}
-
-#progressTime {
+} */
+/* #progressTime {
 	position: absolute;
-}
-
-#duration {
+} */
+/* #duration {
 	position: absolute;
 	width: 100%;
 	text-align: right;
-}
+} */
 
 .text-show {
 	opacity: 1;
@@ -174,4 +173,28 @@
 .text-fade {
 	opacity: 0;
 	transition: all 0.25s ease;
+}
+
+/* --- New Overlay CSS --- */
+/* Ensure the songInfoBox is positioned relative */
+#songInfoBox {
+  position: relative;
+}
+
+/* Yellow overlay covers the media area inside songInfoBox */
+#yellowOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 233, 0, 0.5); /* #FFE900 at 50% opacity */
+  pointer-events: none; /* Allow interactions with underlying content */
+  z-index: 1;
+}
+
+/* Raise the main content in #songInfo above the overlay */
+#songInfo {
+  position: relative;
+  z-index: 2;
 }
